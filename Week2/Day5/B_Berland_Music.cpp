@@ -20,8 +20,14 @@ int main() {
         else one[p[i]] = i;
     }
     int q = 1;
-    for (auto it : zero) p[it.second] = q++;
-    for (auto it : one) p[it.second] = q++;
+    for (auto [x, y] : zero) {
+        p[y] = q;
+        q++;
+    }
+    for (auto [x, y] : one) {
+        p[y] = q;
+        q++;
+    }
     for (int i = 0; i < n; i++) {
         cout << p[i] << " ";
     } 

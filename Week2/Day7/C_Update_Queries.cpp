@@ -11,17 +11,20 @@ int main() {
     string s;
     cin >> s;
     vector<int> v(m);
+    set<int> st;
     for (int i = 0; i < m; i++) {
         cin >> v[i];
+        st.insert(v[i]);
     }
     string s2;
     cin >> s2;
-
-    sort(v.begin(), v.end());
+ 
+    vector<int> v1(st.begin(), st.end());
+    // sort(v.begin(), v.end());
     sort(s2.begin(), s2.end());
-
-    for (int i = 0; i < m; i++) {
-        s[v[i] - 1] = s2[i];
+ 
+    for (int i = 0; i < v1.size(); i++) {
+        s[v1[i] - 1] = s2[i];
     }
     cout << s << '\n';
     // for (int i = 0; i < s.size(); i++) {

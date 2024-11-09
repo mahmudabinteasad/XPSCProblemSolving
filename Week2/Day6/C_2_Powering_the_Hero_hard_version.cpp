@@ -1,29 +1,33 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define ll long long int
 int main() {
    ios::sync_with_stdio(false);
    cin.tie(nullptr);
    int t;
    cin >> t;
    while (t--) {
-    int n;
-    cin >> n;
-    vector<ll> v(n);
-    priority_queue<ll> s;
-    ll ans = 0;
-    for (int i = 0; i < n; i++) {
-        cin >> v[i];
-        if (v[i] == 0) {
-            if (!s.empty()) {
-                ans += s.top();
-                s.pop();
-            }
+    int n, m, q;
+    cin >> n >> m >> q;
+    vector<int> a(m);
+    for (int i = 0; i < m; i++) {
+        cin >> a[i];
+    }
+    sort(a.begin(), a.end());
+    int b;
+    while (q--) {
+        cin >> b;
+        if (b < a[0]) {
+            cout << a[0] - 1 << '\n';
+        } else if (b > a[m - 1]) {
+            cout << n - a[m - 1] << '\n';
         } else {
-            s.push(v[i]);
+            auto it = upper_bound(a.begin(), a.end(), b);
+            auto it2 = it--;
+            int left = *it2, right = *it;
+            int m = (left + right) / 2;
+            cout << min(abs(right - m), abs(m - left)) << '\n';
         }
     }
-    cout << ans << '\n';
    }
     return 0;
 }

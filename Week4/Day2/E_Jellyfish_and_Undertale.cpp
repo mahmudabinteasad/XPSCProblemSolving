@@ -12,7 +12,11 @@ int main() {
     vector<ll> v(n);
     for (ll i = 0; i < n; i++) {
         cin >> v[i];
-        sum += min(v[i] + 1, a) - 1;
+        if (v[i] + 1 <= a) {
+            sum += v[i];
+        } else {
+            sum += a - 1;
+        }
     }
     cout << sum + b << '\n';
    }
